@@ -1,0 +1,7 @@
+Pillow
+streamlit
+numpy
+pdfplumber
+streamlit_option_menu
+opencv-python-headless
+easyocr
