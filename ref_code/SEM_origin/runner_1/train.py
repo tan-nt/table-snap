@@ -81,10 +81,14 @@ def train(cfg, epoch, num_epochs, dataloader, model, optimizer, scheduler, time_
     # === Track time for the entire epoch ===
     epoch_start = time.time()
 
-    cfg.device = (
-        torch.device("mps") if torch.backends.mps.is_available()
-        else torch.device("cpu")
-    )
+    if torch.cuda.is_available():
+        cfg.device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        cfg.device = torch.device("mps")
+    else:
+        cfg.device = torch.device("cpu")
+
+    logger.info(f"[train] Detected device in train.py: {cfg.device.type.upper()}")
 
     for it, data_batch in enumerate(dataloader):
         logger.info('train iter: %d' % it)
@@ -270,7 +274,7 @@ def main():
     )
 
     model = build_model(cfg)
-    if cfg.device == 'gpu':
+    if cfg.device.type.lower() == 'gpu':
         model.cuda()
     else:
         device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")

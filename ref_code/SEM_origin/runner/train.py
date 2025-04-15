@@ -272,12 +272,13 @@ def main():
     )
 
     model = build_model(cfg)
-    if cfg.device == 'gpu':
+    if cfg.device.type.lower() == 'gpu':
         model.cuda()
     else:
         device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
         model.to(device)
 
+    logger.info(f"[main] Detected device in train.py: {cfg.device.type.upper()}")
 
     if distributed():
         synchronizer = ModelSynchronizer(model, cfg.sync_rate)
