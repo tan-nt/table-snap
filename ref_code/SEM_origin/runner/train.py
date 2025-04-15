@@ -272,7 +272,7 @@ def main():
     )
 
     model = build_model(cfg)
-    if cfg.device.type.lower() == 'gpu':
+    if cfg.device.type.lower() == 'cuda':
         model.cuda()
     else:
         device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
