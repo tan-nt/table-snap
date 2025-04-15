@@ -273,10 +273,14 @@ def main():
 
     model = build_model(cfg)
     if cfg.device.type.lower() == 'cuda':
+        logger.info(f"[main] Turn on model to GPU")
         model.cuda()
+    elif cfg.device.type.lower() == 'mps':
+        logger.info(f"[main] Turn on model to MPS")
+        model.to('mps')
     else:
-        device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-        model.to(device)
+        logger.info(f"[main] Turn on model to CPU")
+        model.to('cpu')
 
     logger.info(f"[main] Detected device in train.py: {cfg.device.type.upper()}")
 
