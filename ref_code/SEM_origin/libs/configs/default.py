@@ -82,16 +82,16 @@ base_lr = 0.0001
 min_lr = 1e-6
 weight_decay = 0
 
-num_epochs = 1
+num_epochs = 5
 
 cpu_max_iters_per_epoch = 50
 gpu_mps_max_iters_per_epoch = 20
-gpu_max_iters_per_epoch = 50
+gpu_max_iters_per_epoch = 1000000
 
 
 cpu_max_valid_iters = 10
 gpu_mps_max_valid_iters = 5
-gpu_max_valid_iters = 3000 # run all
+gpu_max_valid_iters = 30000 # run all
 
 sync_rate = 20
 
