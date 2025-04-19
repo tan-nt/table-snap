@@ -36,8 +36,7 @@ class Counter:
         return total_metric_dict
 
     def format_mean(self, sync=True):
-        # if sync and distributed():
-        if sync:
+        if sync and distributed():
             metric_dict = self._sync()
         else:
             metric_dict = self.metric_dict

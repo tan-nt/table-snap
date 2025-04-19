@@ -135,7 +135,7 @@ def cal_row_span(table, cells_span, cells_bbox, height):
         for cell_id in row:
             cell_span = cells_span[cell_id]
             if cell_id >= len(cells_bbox):
-                print(f"[cal_row_span] Warning: Skipping invalid cell_id {cell_id}, total_cells={len(cells_bbox)}")
+                # print(f"[cal_row_span] Warning: Skipping invalid cell_id {cell_id}, total_cells={len(cells_bbox)}")
                 continue
             else:
                 cell_bbox = cells_bbox[cell_id]
@@ -168,7 +168,7 @@ def cal_col_span(table, cells_span, cells_bbox, width):
         for cell_id in col:
             cell_span = cells_span[cell_id]
             if cell_id >= len(cells_bbox):
-                print(f"[cal_col_span] Warning: Skipping invalid cell_id {cell_id}, total_cells={len(cells_bbox)}")
+                # print(f"[cal_col_span] Warning: Skipping invalid cell_id {cell_id}, total_cells={len(cells_bbox)}")
                 continue
             else:
                 cell_bbox = cells_bbox[cell_id]

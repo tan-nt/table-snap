@@ -81,9 +81,12 @@ def train(cfg, epoch, num_epochs, dataloader, model, optimizer, scheduler, time_
     epoch_start = time.time()
 
     cfg.device = (
-        torch.device("mps") if torch.backends.mps.is_available()
+        torch.device("cuda") if torch.cuda.is_available()
+        else torch.device("mps") if torch.backends.mps.is_available()
         else torch.device("cpu")
     )
+
+    print(f"Using device in train runner: {cfg.device}")
 
     for it, data_batch in enumerate(dataloader):
         iter_start = time.time()
@@ -124,7 +127,7 @@ def train(cfg, epoch, num_epochs, dataloader, model, optimizer, scheduler, time_
 
         iter_elapsed = time.time() - iter_start
         # === Iteration Logging ===
-        logger.info(f"it: {it}, cfg.log_sep: {cfg.log_sep}")
+        # logger.info(f"it: {it}, cfg.log_sep: {cfg.log_sep}")
         if it % cfg.log_sep == 0:
             mem = torch.cuda.max_memory_allocated() / 1024 / 1024
             lr = cal_mean_lr(optimizer)
@@ -197,8 +200,8 @@ def valid(cfg, dataloader, model):
                 label_relations.append(json.load(f))
         total_label_relations.extend(label_relations)
 
-    print('total_label_relations=', len(total_label_relations), ', data=', total_label_relations)
-    print('total_pred_relations=', len(total_pred_relations), ', data=', total_pred_relations)
+    # print('total_label_relations=', len(total_label_relations), ', data=', total_label_relations)
+    # print('total_pred_relations=', len(total_pred_relations), ', data=', total_pred_relations)
 
     # cal P, R, F1
     total_relations_metric = evaluate_f1(total_label_relations, total_pred_relations, num_workers=40)
