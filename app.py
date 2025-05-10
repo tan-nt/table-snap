@@ -31,7 +31,7 @@ st.sidebar.header("Navigation")
 with st.sidebar:
     selected = option_menu(
         menu_title=None,
-        options=["🏠 Home", "📂 Upload & Extract", "💬 Go Chat"],
+        options=["🏠 Home", "📂 Table Structure Extraction", "💬 Chatbot"],
         icons=["house", "file-earmark-arrow-up", "chat-dots"],
         menu_icon="cast",
         default_index=1,
@@ -48,41 +48,49 @@ with st.sidebar:
     )
 
 if "page" not in st.session_state:
-    st.session_state.page = "upload_extract"
+    st.session_state.page = "table_structure_extraction"
 # Default to "Upload & Extract" page
 
 if selected == "🏠 Home":
     st.session_state.page = "home"
-elif selected == "📂 Upload & Extract":
-    st.session_state.page = "upload_extract"
-elif selected == "💬 Go Chat":
+elif selected == "📂 Table Structure Extraction":
+    st.session_state.page = "table_structure_extraction"
+elif selected == "💬 Chatbot":
     st.session_state.page = "chat"
 
 def upload_and_extract_table():
     # Sidebar Configuration UI
-    st.sidebar.title("Table Extraction Configuration")
+    st.sidebar.title("Configuration")
     structure_extraction_method = st.sidebar.radio(
-        "Choose Table Extraction Method",
-        options=["Contours Detection", "Yolo", "Transformer"],
-        help="Select how you want to extract tables from the uploaded image."
-    )
-    structure_extraction_method = st.sidebar.radio(
-        "Choose Table Structure Extraction Method",
-        options=["Contours Detection", "Yolo", "Transformer"],
-        help="Select how you want to extract tables from the uploaded image."
+        "Choose method",
+        options=["Contours Detection (Traditional, heuristic method)", "UniTable (Latest, unified, SOTA method)", "Table Transformer (A deep-learning with CNN and Transformer, also called a DERT method)"],
+        help="Select how you want to extract tables from the uploaded image.",
     )
 
     st.header("📂 Upload and Extract Table")
+    st.info("Choose an image and click 'Run' on the sidebar to extract the table.")
 
+    example_images = [
+        {"label": "Example 1", "path": "assets/tsr_examples/vi_invoice.jpg"},
+        {"label": "Example 2", "path": "assets/tsr_examples/en_invoice.png"},
+        {"label": "Example 3", "path": "assets/tsr_examples/handwritten_invoice.jpeg"},
+        {"label": "Example 4", "path": "assets/tsr_examples/tsr_table.jpg"},
+    ]
+
+    from streamlit_image_select import image_select
+    img = image_select("Table image examples", [image['path'] for image in example_images])
+    st.write(img)
+
+    # Allow the user to upload their own image
     file = st.file_uploader("Upload a PDF, Image, or Excel File", type=["pdf", "png", "jpg", "jpeg", "xlsx"])
+
+    # Process the uploaded file or use the selected example image
     file_type = None
     if not file:
-        st.info("No file uploaded. Using the default image for table extraction.")
-        default_file_path = os.path.join("assets", "invoice/vi_invoice.jpg")
-        with open(default_file_path, "rb") as default_file:
+        with open(img, "rb") as default_file:
             file_content = default_file.read()
         file = BytesIO(file_content)
-        file_type = "jpg"
+        file_type = img.split(".")[-1].lower()
     else:
         file_type = file.name.split(".")[-1].lower()
 
@@ -91,22 +99,24 @@ def upload_and_extract_table():
     else:
         st.warning("Displaying images is supported only for PNG, JPG, and JPEG formats.")
 
-    if structure_extraction_method == "Contours Detection":
-        table_detected_image, contours = detect_and_show_table(file)
-        st.image(table_detected_image, caption="Detected Table(s)", use_container_width=True)
+    if st.sidebar.button('Run'):
+        st.write("You pressed the Run button!")
+        if structure_extraction_method == "Contours Detection":
+            table_detected_image, contours = detect_and_show_table(file)
+            st.image(table_detected_image, caption="Detected Table(s)", use_container_width=True)
 
-        if contours:
-            st.info(f"{len(contours)} table(s) detected. Processing the largest table.")
-            largest_contour = max(contours, key=cv2.contourArea) # Process the largest table
-            table = extract_table_from_image(file, largest_contour)
-            if not table.empty:
-                st.write("Extracted Table:")
-                st.write(table)
-                st.download_button("Download as CSV", table.to_csv(index=False), "table.csv")
-            else:
-                st.warning("No text detected in the table region.")
-    else:
-        st.warning("No tables detected in the uploaded image.")
+            if contours:
+                st.info(f"{len(contours)} table(s) detected. Processing the largest table.")
+                largest_contour = max(contours, key=cv2.contourArea) # Process the largest table
+                table = extract_table_from_image(file, largest_contour)
+                if not table.empty:
+                    st.write("Extracted Table:")
+                    st.write(table)
+                    st.download_button("Download as CSV", table.to_csv(index=False), "table.csv")
+                else:
+                    st.warning("No text detected in the table region.")
+        else:
+            st.warning("No tables detected in the uploaded image.")
 
 if st.session_state.page == "home":
     st.title("Welcome to Table Snap")
@@ -147,16 +157,15 @@ if st.session_state.page == "home":
         """
     )
 
-
-elif st.session_state.page == "upload_extract":
-    upload_and_extract_table()
-
 elif st.session_state.page == "chat":
     st.title("💬 Chat with AI")
     st.markdown("Ask me anything about your extracted data or tables!")
     user_input = st.text_input("Type your question:")
     if user_input:
         st.write(f"🤖 Bot: I'm here to help with your data questions!")
+
+if st.session_state.page == "table_structure_extraction":
+    upload_and_extract_table()
 
 st.markdown("---")
 st.markdown(
