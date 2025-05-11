@@ -14,3 +14,4 @@ rapid_table[torch]
 rapidocr_onnxruntime
 matplotlib
 transformers
+psutil

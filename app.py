@@ -5,6 +5,7 @@ import os
 from io import BytesIO
 import cv2
 from utils.image import image_to_base64
+import psutil
 
 
 st.set_page_config(page_title="Table Snap", layout="wide", page_icon="assets/table_snap_icon.png")
