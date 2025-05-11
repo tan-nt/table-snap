@@ -403,10 +403,10 @@ def upload_and_extract_table():
                 else:
                     st.warning("No text detected in the table region.")
             sum_elapse = time.time() - start_time
-            table_type = 'table'
-            # cls, elasp = table_cls_ins(img)
-            # if cls == 'wired':
-            #     table_type = 'wired_table_v2'
+            table_type = 'lineless_table'
+            cls, elasp = table_cls_ins(img)
+            if cls == 'wired':
+                table_type = 'wired_table_v2'
             all_elapse = f"- Table Type: {table_type}\n - Table all cost: {sum_elapse:.5f} seconds"
 
             if not table.empty:
@@ -466,10 +466,10 @@ def upload_and_extract_table():
 
             end_time = time.time()
             sum_elapse = end_time - start_time
-            table_type = 'table'
-            # cls, elasp = table_cls_ins(img)
-            # if cls == 'wired':
-            #     table_type = 'wired_table_v2'
+            table_type = 'lineless_table'
+            cls, elasp = table_cls_ins(img)
+            if cls == 'wired':
+                table_type = 'wired_table_v2'
             all_elapse = f"- Table Type: {table_type}\n - Table all cost: {sum_elapse:.5f} seconds"
             if not df.empty:
                 print(f'set latest_df={df}')
@@ -481,13 +481,13 @@ def upload_and_extract_table():
 
 
 def select_table_model(img, table_engine_type, det_model, rec_model):
-    # cls, elasp = table_cls_ins(img)
-    # if cls == 'wired':
-    #     return unitable_table_Engine, "wired_table_v2"
-    # elif cls == 'lineless':
-    #     return unitable_table_Engine, "lineless_table"
-    # else:
-    return unitable_table_Engine, table_engine_type
+    cls, elasp = table_cls_ins(img)
+    if cls == 'wired':
+        return unitable_table_Engine, "wired_table_v2"
+    elif cls == 'lineless':
+        return unitable_table_Engine, "lineless_table"
+    else:
+        return unitable_table_Engine, table_engine_type
     # if table_engine_type == "RapidTable(SLANet)":
     #     return rapid_table_engine, table_engine_type
     # elif table_engine_type == "RapidTable(SLANet-plus)":
