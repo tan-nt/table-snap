@@ -16,3 +16,4 @@ matplotlib
 transformers
 psutil
 pytesseract
+opencv-python
