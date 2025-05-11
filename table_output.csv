@@ -1,0 +1,20 @@
+I n v o i c e N u m b e r,I N V 1 0 0 0 1,
+D a t e,2 0 2 2 - 0 3 - 1 5,
+C u s t o m e r N a m e,J o h n D o e,
+C u s t o m e r A d d r e s s,1 2 3 M a i n S t r e e t,
+,,"A n y t o w n , U S A 1 2 3 4 5"
+C u s t o m e r E m a i l,j o h n d o e @ e x a m p l e . c o m,
+B i l l T o,S a m e a s C u s t o m e r,
+S h i p T o,S a m e a s C u s t o m e r,
+P a y m e n t M e t h o d,C r e d i t C a r d,
+P a y m e n t T e r m s,N e t 3 0,
+D u e D a t e,2 0 2 2 - 0 4 - 1 4,
+I t e m,Q u a n t i t y,A m o u n t
+P r o d u c t A,2,$ 1 0 0 . 0 0
+P r o d u c t B,3,$ 1 5 0 . 0 0
+P r o d u c t C,1,$ 5 0 . 0 0
+S u b t o t a l,,$ 3 0 0 . 0 0
+T a x ( 7 % ),,$ 2 1 . 0 0
+T o t a l,,$ 3 2 1 . 0 0
+,,
+a n k y o u f o r y o u r b u s i n e,,

@@ -13,3 +13,4 @@ rapid_table
 rapid_table[torch]
 rapidocr_onnxruntime
 matplotlib
+transformers
