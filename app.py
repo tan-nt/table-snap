@@ -66,7 +66,6 @@ from transformers import TableTransformerForObjectDetection
 import torch
 import matplotlib.pyplot as plt
 import os
-import psutil
 import time
 from transformers import DetrFeatureExtractor
 import pandas as pd
