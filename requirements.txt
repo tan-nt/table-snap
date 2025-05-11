@@ -17,3 +17,7 @@ transformers
 psutil
 pytesseract
 opencv-python
+timm
+accelerate>=0.20.3
+pillow
+pandas
