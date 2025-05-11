@@ -71,7 +71,7 @@ def upload_and_extract_table():
     st.info("Choose an image and click 'Run' on the sidebar to extract the table.")
 
     example_images = [
-        {"label": "Example 1", "path": "assets/tsr_examples/vi_invoice.jpg"},
+        {"label": "Invoice Data", "path": "assets/tsr_examples/invoice.jpg"},
         {"label": "Example 2", "path": "assets/tsr_examples/en_invoice.png"},
         {"label": "Example 3", "path": "assets/tsr_examples/handwritten_invoice.jpeg"},
         {"label": "Example 4", "path": "assets/tsr_examples/tsr_table.jpg"},
@@ -104,6 +104,8 @@ def upload_and_extract_table():
 
         st.info("The result will be displayed here")
         if structure_extraction_method == "Contours Detection":
+            st.sidebar.title("Elapsed Time")
+            start_time = time.time()
             table_detected_image, contours = detect_and_show_table(file)
             st.image(table_detected_image, caption="Detected Table(s)", use_container_width=True)
 
@@ -117,6 +119,13 @@ def upload_and_extract_table():
                     st.download_button("Download as CSV", table.to_csv(index=False), "table.csv")
                 else:
                     st.warning("No text detected in the table region.")
+            sum_elapse = time.time() - start_time
+            table_type = 'lineless_table'
+            cls, elasp = table_cls(img)
+            if cls == 'wired':
+                table_type = 'wired_table_v2'
+            all_elapse = f"- Table Type: {table_type}\n - Table all cost: {sum_elapse:.5f} seconds"
+            st.sidebar.write(all_elapse)
         elif structure_extraction_method == "UniTable":
             st.sidebar.title("Elapsed Time")
             from PIL import Image
@@ -165,7 +174,10 @@ from wired_table_rec import WiredTableRecognition
 from rapid_table.main import ModelType
 from table_cls import TableCls
 from rapidocr_onnxruntime import RapidOCR
+
+
 img_loader = LoadImage()
+table_cls = TableCls()
 
 from wired_table_rec.main import WiredTableInput, WiredTableRecognition
 from lineless_table_rec.main import LinelessTableInput, LinelessTableRecognition
@@ -200,7 +212,13 @@ for det_model in det_model_dir.keys():
         ocr_engine_dict[key] = RapidOCR(det_model_path=det_model_path, rec_model_path=rec_model_path)
 
 def select_table_model(img, table_engine_type, det_model, rec_model):
-    return  unitable_table_Engine, table_engine_type
+    cls, elasp = table_cls(img)
+    if cls == 'wired':
+        return unitable_table_Engine, "wired_table_v2"
+    elif cls == 'lineless':
+        return unitable_table_Engine, "lineless_table"
+    else:
+        return unitable_table_Engine, table_engine_type
     # if table_engine_type == "RapidTable(SLANet)":
     #     return rapid_table_engine, table_engine_type
     # elif table_engine_type == "RapidTable(SLANet-plus)":
