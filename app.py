@@ -77,7 +77,7 @@ from lineless_table_rec import LinelessTableRecognition
 from rapid_table import RapidTable, RapidTableInput
 from wired_table_rec import WiredTableRecognition
 from rapid_table.main import ModelType
-from table_cls import TableCls
+# from table_cls import TableCls
 from rapidocr_onnxruntime import RapidOCR
 from wired_table_rec.main import WiredTableInput, WiredTableRecognition
 from lineless_table_rec.main import LinelessTableInput, LinelessTableRecognition
@@ -88,7 +88,7 @@ table_detection_model = TableTransformerForObjectDetection.from_pretrained("micr
 feature_extractor = DetrFeatureExtractor()
 
 img_loader = LoadImage()
-table_cls_ins = TableCls()
+# table_cls_ins = TableCls()
 
 rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="models/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
 SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="models/tsr/slanet-plus.onnx"))
