@@ -568,17 +568,17 @@ model_name = "tablegpt/TableGPT2-7B"
 from accelerate import disk_offload
 # Load the model (with device_map="auto" and offloading enabled)
 table_gpt_model = AutoModelForCausalLM.from_pretrained(
-    "gpt2",  # Replace with your model name
+    model_name,  # Replace with your model name
     torch_dtype="auto",  # Auto-detect precision
     device_map="auto",  # Automatically assign devices (GPU/CPU)
-    offload_folder="./TableGPT2-7B"  # Specify the folder for offloading model weights
+    # offload_folder="./TableGPT2-7B"  # Specify the folder for offloading model weights
 )
 
 # Specify the offload directory (the folder where the model weights will be saved)
-offload_directory = './TableGPT2-7B'  # You can change this path to your desired folder
+# offload_directory = './TableGPT2-7B'  # You can change this path to your desired folder
 
 # Call the disk_offload function to offload the model weights to disk
-disk_offload(table_gpt_model, offload_dir=offload_directory)
+# disk_offload(table_gpt_model, offload_dir=offload_directory)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -663,31 +663,29 @@ elif st.session_state.page == "table_chatbot":
             {"role": "user", "content": prompt}
         ]
 
-       # Set the device (either CUDA for GPU or CPU)
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+    #    # Set the device (either CUDA for GPU or CPU)
+    #     device = "cuda" if torch.cuda.is_available() else "cpu"
 
+    #     # Initialize the model using .to_empty() and specify the device
+    #     table_gpt_model.to_empty(device=device)  # Specify the device here (cuda or cpu)
 
-        # Set the device (either CUDA for GPU or CPU)
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+    #     # Now move the model to the correct device (either CPU or GPU)
+    #     table_gpt_model = table_gpt_model.to(device)
 
-        # Initialize the model using .to_empty() and specify the device
-        table_gpt_model.to_empty(device=device)  # Specify the device here (cuda or cpu)
-
-        # Now move the model to the correct device (either CPU or GPU)
-        table_gpt_model = table_gpt_model.to(device)
+        text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
         # Tokenize input and prepare model inputs
         model_inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True).to(device)
 
         # Generate response from the model
         generated_ids = table_gpt_model.generate(**model_inputs, max_new_tokens=512)
+        generated_ids = [output_ids[len(input_ids):] for output_ids, input_ids in zip(model_inputs["input_ids"], generated_ids)]
 
         # Decode the response
-        answer = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-        print('answer=', answer)
-
+        response = tokenizer.decode(generated_ids, skip_special_tokens=True)[0]
+        print('response=', response)
         # Append bot response to the conversation history
-        bot_response = f"🤖 Bot: {answer}"
+        bot_response = f"🤖 Bot: {response}"
         st.session_state.conversation.append(bot_response)
 
         # Display the entire conversation history
