@@ -30,8 +30,6 @@ RUN . env/bin/activate && env/bin/pip install -r requirements.txt
 ENV PATH="/app/env/bin:$PATH"
 ENV TZ=Asia/Ho_Chi_Minh
 
-# Configure Nginx
-COPY nginx.conf /etc/nginx/sites-available/default
 
 # Run the startup script
 CMD ["./startup.sh"]
