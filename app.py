@@ -88,7 +88,7 @@ table_detection_model = TableTransformerForObjectDetection.from_pretrained("micr
 feature_extractor = DetrFeatureExtractor()
 
 img_loader = LoadImage()
-table_cls = TableCls()
+table_cls_ins = TableCls()
 
 rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="models/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
 SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="models/tsr/slanet-plus.onnx"))
@@ -404,7 +404,7 @@ def upload_and_extract_table():
                     st.warning("No text detected in the table region.")
             sum_elapse = time.time() - start_time
             table_type = 'lineless_table'
-            cls, elasp = table_cls(img)
+            cls, elasp = table_cls_ins(img)
             if cls == 'wired':
                 table_type = 'wired_table_v2'
             all_elapse = f"- Table Type: {table_type}\n - Table all cost: {sum_elapse:.5f} seconds"
@@ -467,7 +467,7 @@ def upload_and_extract_table():
             end_time = time.time()
             sum_elapse = end_time - start_time
             table_type = 'lineless_table'
-            cls, elasp = table_cls(img)
+            cls, elasp = table_cls_ins(img)
             if cls == 'wired':
                 table_type = 'wired_table_v2'
             all_elapse = f"- Table Type: {table_type}\n - Table all cost: {sum_elapse:.5f} seconds"
@@ -481,7 +481,7 @@ def upload_and_extract_table():
 
 
 def select_table_model(img, table_engine_type, det_model, rec_model):
-    cls, elasp = table_cls(img)
+    cls, elasp = table_cls_ins(img)
     if cls == 'wired':
         return unitable_table_Engine, "wired_table_v2"
     elif cls == 'lineless':
