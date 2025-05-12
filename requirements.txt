@@ -12,6 +12,7 @@ table_cls
 rapid_table
 rapid_table[torch]
 rapidocr_onnxruntime
+onnxruntime-gpu
 matplotlib
 transformers
 psutil
@@ -21,3 +22,4 @@ timm
 accelerate>=0.20.3
 pillow
 pandas
+google-cloud-aiplatform

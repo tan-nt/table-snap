@@ -196,3 +196,8 @@ ref_code/SEM_origin/dataset/SciTSR/
 resnet_34.pth
 
 .DS_Store
+firebase_credential.json
+
+**/*.pth
+
+*2470479_Huynh ThanhTan_MasterThesis*

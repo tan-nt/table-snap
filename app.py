@@ -6,7 +6,7 @@ from io import BytesIO
 import cv2
 from utils.image import image_to_base64
 import psutil
-
+from utils.chat import get_google_gemini_generate_answer
 
 st.set_page_config(page_title="Table Snap", layout="wide", page_icon="assets/table_snap_icon.png")
 st.title("Table Snap - A solution for extracting tables from invoices, receipts, and more.")
@@ -511,6 +511,7 @@ def select_table_model(img, table_engine_type, det_model, rec_model):
 def select_ocr_model(det_model, rec_model):
     return ocr_engine_dict[f"{det_model}_{rec_model}"]
 
+
 def trans_char_ocr_res(ocr_res):
     word_result = []
     for res in ocr_res:
@@ -556,31 +557,35 @@ def process_image(img_input, small_box_cut_enhance, table_engine_type, char_ocr,
 
     return complete_html, table_boxes_img, ocr_boxes_img, all_elapse
 
-from transformers import AutoTokenizer, AutoModelForCausalLM
-model_name = "tablegpt/TableGPT2-7B"
-# model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype='auto', device_map='auto')
-# model = AutoModelForCausalLM.from_pretrained(
-#     model_name,
-#     torch_dtype=torch.float32,  # Force the model to use float32 precision
-#     device_map='auto'  # Automatically distribute the model across available devices
-# )
+def get_response_from_table_gpt(text):
+    from transformers import AutoTokenizer, AutoModelForCausalLM
+    model_name = "tablegpt/TableGPT2-7B"
+    # model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype='auto', device_map='auto')
+    # model = AutoModelForCausalLM.from_pretrained(
+    #     model_name,
+    #     torch_dtype=torch.float32,  # Force the model to use float32 precision
+    #     device_map='auto'  # Automatically distribute the model across available devices
+    # )
 
-from accelerate import disk_offload
-# Load the model (with device_map="auto" and offloading enabled)
-table_gpt_model = AutoModelForCausalLM.from_pretrained(
-    model_name,  # Replace with your model name
-    torch_dtype="auto",  # Auto-detect precision
-    device_map="auto",  # Automatically assign devices (GPU/CPU)
-    # offload_folder="./TableGPT2-7B"  # Specify the folder for offloading model weights
-)
+    # Load the model (with device_map="auto" and offloading enabled)
+    table_gpt_model = AutoModelForCausalLM.from_pretrained(
+        model_name,  # Replace with your model name
+        torch_dtype="auto",  # Auto-detect precision
+        device_map="auto",  # Automatically assign devices (GPU/CPU)
+    )
 
-# Specify the offload directory (the folder where the model weights will be saved)
-# offload_directory = './TableGPT2-7B'  # You can change this path to your desired folder
+    # Specify the offload directory (the folder where the model weights will be saved)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-# Call the disk_offload function to offload the model weights to disk
-# disk_offload(table_gpt_model, offload_dir=offload_directory)
+    model_inputs = tokenizer([text], return_tensors="pt").to(table_gpt_model.device)
+    generated_ids = table_gpt_model.generate(**model_inputs, max_new_tokens=512)
+    generated_ids = [output_ids[len(input_ids):] for output_ids, input_ids in zip(model_inputs["input_ids"], generated_ids)]
+    response = tokenizer.decode(generated_ids, skip_special_tokens=True)[0]
+    return response
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+def get_response_from_ai(text):
+    return get_google_gemini_generate_answer(text)
 
 if st.session_state.page == "home":
     st.title("Welcome to Table Snap")
@@ -653,36 +658,14 @@ elif st.session_state.page == "table_chatbot":
             */
             Question: {user_input}
         """
+        print('prompt_template=', prompt_template)
 
         if latest_df is not None:
-            prompt = prompt_template.format(var_name="latest_df", df_info=latest_df.head(5).to_string(index=False), user_input=user_input)
+            prompt = prompt_template.format(var_name="latest_df", df_info=latest_df, user_input=user_input)
         else:
             prompt = user_input
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant that can answer questions about the table."},
-            {"role": "user", "content": prompt}
-        ]
 
-    #    # Set the device (either CUDA for GPU or CPU)
-    #     device = "cuda" if torch.cuda.is_available() else "cpu"
-
-    #     # Initialize the model using .to_empty() and specify the device
-    #     table_gpt_model.to_empty(device=device)  # Specify the device here (cuda or cpu)
-
-    #     # Now move the model to the correct device (either CPU or GPU)
-    #     table_gpt_model = table_gpt_model.to(device)
-
-        text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-
-        # Tokenize input and prepare model inputs
-        model_inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True).to(device)
-
-        # Generate response from the model
-        generated_ids = table_gpt_model.generate(**model_inputs, max_new_tokens=512)
-        generated_ids = [output_ids[len(input_ids):] for output_ids, input_ids in zip(model_inputs["input_ids"], generated_ids)]
-
-        # Decode the response
-        response = tokenizer.decode(generated_ids, skip_special_tokens=True)[0]
+        response = get_response_from_ai(prompt)
         print('response=', response)
         # Append bot response to the conversation history
         bot_response = f"🤖 Bot: {response}"

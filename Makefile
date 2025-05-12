@@ -9,3 +9,7 @@ app-run:
 
 run:
 	. .venv/bin/activate && streamlit run app.py
+
+
+script:
+	python3 table_annotation_generator.py
