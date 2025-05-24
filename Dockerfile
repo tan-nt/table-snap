@@ -30,13 +30,14 @@ RUN apt-get update &&  apt-get install -y libgl1-mesa-glx && apt-get install -y 
 # Install gdown to download files from Google Drive
 RUN pip install gdown
 
-RUN rm -rf ./models
+RUN rm -rf ./model_weights
 
 # Download the file from Google Drive using the file ID
 RUN gdown https://drive.google.com/uc?id=1T-7oQDPWDM4BNa8Wl-2ThZJxptAS7ASW
 # If the downloaded file is a ZIP archive, unzip it
 # (You can replace "file_name.zip" with your actual downloaded file's name)
 RUN unzip models.zip -d ./
+RUN mv /models /model_weights
 
 
 # RUN apt-get install libgl1 mesa-utils

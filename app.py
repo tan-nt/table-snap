@@ -90,12 +90,12 @@ feature_extractor = DetrFeatureExtractor()
 img_loader = LoadImage()
 # table_cls_ins = TableCls()
 
-rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="models/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
-SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="models/tsr/slanet-plus.onnx"))
+rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="model_weights/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
+SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="model_weights/tsr/slanet-plus.onnx"))
 unitable_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.UNITABLE.value, model_path={
-            "encoder": f"models/tsr/unitable_encoder.pth",
-            "decoder": f"models/tsr/unitable_decoder.pth",
-            "vocab": f"models/tsr/unitable_vocab.json",
+            "encoder": f"model_weights/tsr/unitable_encoder.pth",
+            "decoder": f"model_weights/tsr/unitable_decoder.pth",
+            "vocab": f"model_weights/tsr/unitable_vocab.json",
         }))
 
 wired_input = WiredTableInput()
@@ -105,11 +105,11 @@ wired_table_engine_v1 = wired_engine
 wired_table_engine_v2 = wired_engine
 lineless_engine = LinelessTableRecognition(lineless_input)
 det_model_dir = {
-    "mobile_det": "models/ocr/ch_PP-OCRv4_det_infer.onnx",
+    "mobile_det": "model_weights/ocr/ch_PP-OCRv4_det_infer.onnx",
 }
 
 rec_model_dir = {
-    "mobile_rec": "models/ocr/ch_PP-OCRv4_rec_infer.onnx",
+    "mobile_rec": "model_weights/ocr/ch_PP-OCRv4_rec_infer.onnx",
 }
 ocr_engine_dict = {}
 for det_model in det_model_dir.keys():

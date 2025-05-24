@@ -88,17 +88,17 @@ def save_file_annotations():
 img_loader = LoadImage()
 
 unitable_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.UNITABLE.value, model_path={
-            "encoder": f"models/tsr/unitable_encoder.pth",
-            "decoder": f"models/tsr/unitable_decoder.pth",
-            "vocab": f"models/tsr/unitable_vocab.json",
+            "encoder": f"model_weights/tsr/unitable_encoder.pth",
+            "decoder": f"model_weights/tsr/unitable_decoder.pth",
+            "vocab": f"model_weights/tsr/unitable_vocab.json",
         }))
 
 det_model_dir = {
-    "mobile_det": "models/ocr/ch_PP-OCRv4_det_infer.onnx",
+    "mobile_det": "model_weights/ocr/ch_PP-OCRv4_det_infer.onnx",
 }
 
 rec_model_dir = {
-    "mobile_rec": "models/ocr/ch_PP-OCRv4_rec_infer.onnx",
+    "mobile_rec": "model_weights/ocr/ch_PP-OCRv4_rec_infer.onnx",
 }
 
 
