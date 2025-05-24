@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>Complex Table Example</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên thuốc - hàm lượng</th>
+          <th>ĐVT</th>
+          <th>Số lượng</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+          <th>Chiết khấu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Tebexerol 125ml (mmunoxel)</td>
+          <td>Hộp</td>
+          <td>3</td>
+          <td>864.000</td>
+          <td>2.592.000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ETEXBENKIS (Thymomodulin 80mg)</td>
+          <td>Viên</td>
+          <td>60</td>
+          <td>7.276</td>
+          <td>436.560</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Herarian (L-glutathion, a-lipoic Acid, 3 glucan, silymarin)</td>
+          <td>Viên</td>
+          <td>60</td>
+          <td>36.300</td>
+          <td>2.178.000</td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" style="text-align:right; font-weight:bold;">Tổng</td>
+          <td style="font-weight:bold;" colspan="2">5.206.560</td>
+      </tfoot>
+    </table>
+  </body>
+</html>

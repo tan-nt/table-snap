@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.6">
+  <diagram name="Page-1" id="n9OfAMDEA9C9--V1HQ3J">
+    <mxGraphModel dx="1432" dy="516" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-1" value="Heuristic-based approaches" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-53" y="178" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-3" target="E0_KhGSE9cnOFzJycLK5-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-3" value="&lt;div&gt;- Struggles with complex layouts&lt;/div&gt;&lt;div&gt;- Irregular Structure&lt;/div&gt;&lt;div&gt;- Diverse format cells,&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;etc&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="124" y="117" width="208" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-1" target="E0_KhGSE9cnOFzJycLK5-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="295" as="sourcePoint" />
+            <mxPoint x="450" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-6" value="2. has limitations" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="7.5" y="131" width="126" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-8" value="Predefined rules such as l&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ines, text style, w&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;hitespace, etc&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="124" y="254" width="205" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-10" value="1. focus on" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="24" y="267.5" width="79" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-1" target="E0_KhGSE9cnOFzJycLK5-8" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="295" as="sourcePoint" />
+            <mxPoint x="450" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-12" value="3. lead to challanges&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="339" y="115" width="126" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-13" target="E0_KhGSE9cnOFzJycLK5-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-13" value="&lt;div&gt;- Varying cell sizes&lt;/div&gt;&lt;div&gt;- Spanning cells&lt;/div&gt;&lt;div&gt;- Split and merged, nested rows,&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;etc&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- Different background, multi-page tables&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="467" y="117" width="240" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-15" target="E0_KhGSE9cnOFzJycLK5-22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-15" value="Machine Learning and&amp;nbsp;&lt;div&gt;Deep Learning&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="493.5" y="258" width="187" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-17" value="4. addressed by" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="465" y="207" width="126" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-19" value="- CNNs &amp;amp; RNNs: learn hierarchical features&lt;div&gt;- GNNs: learn relationship between cells, rows, columns, etc&lt;/div&gt;&lt;div&gt;- Transformer &amp;amp; Mechanisms: capture comtextual relationships&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="100" y="380" width="283" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-20" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-15" target="E0_KhGSE9cnOFzJycLK5-19" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="399" y="384" as="sourcePoint" />
+            <mxPoint x="449" y="334" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-21" value="5. utilize" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="332" y="353" width="126" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-22" value="Annotated datasets:&lt;div&gt;- ICDAR Table Competition&lt;/div&gt;&lt;div&gt;- PubTabNet&lt;/div&gt;&lt;div&gt;- SCiTSR dataset&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="498.5" y="383" width="177" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-24" value="6. test and validate on" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="459" y="355" width="126" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-25" value="End-to-End systems:&lt;div&gt;- Unified Frameowrk for Detection and Recogntion&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="761" y="380" width="177" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-26" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="E0_KhGSE9cnOFzJycLK5-15" target="E0_KhGSE9cnOFzJycLK5-25" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="426" y="333" as="sourcePoint" />
+            <mxPoint x="476" y="283" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E0_KhGSE9cnOFzJycLK5-27" value="7. Result in" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="693" y="355" width="126" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

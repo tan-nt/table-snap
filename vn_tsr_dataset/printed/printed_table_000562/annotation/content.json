@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hóa Đơn Bán Hàng</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Mặt hàng</th>
+          <th>SL</th>
+          <th>ĐVT</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bia Tiger</td>
+          <td>3</td>
+          <td>ly</td>
+          <td>20,000</td>
+          <td style="text-align:right;">60,000</td>
+        </tr>
+        <tr>
+          <td>Trà Ô Long</td>
+          <td>3</td>
+          <td>ly</td>
+          <td>15,000</td>
+          <td style="text-align:right;">45,000</td>
+        </tr>
+        <tr>
+          <td>Bia Heineken</td>
+          <td>2</td>
+          <td>ly</td>
+          <td>25,000</td>
+          <td style="text-align:right;">50,000</td>
+        </tr>
+        <tr>
+          <td>Thuốc Mèo</td>
+          <td>2</td>
+          <td> ly</td>
+          <td>25,000</td>
+          <td style="text-align:right;">50,000</td>
+        </tr>
+        <tr>
+          <td>Nước yến</td>
+          <td>4</td>
+          <td>ly</td>
+          <td>15,000</td>
+          <td style="text-align:right;">60,000</td>
+        </tr>
+        <tr>
+          <td>Sting</td>
+          <td>6</td>
+          <td>ly</td>
+          <td>15,000</td>
+          <td style="text-align:right;">90,000</td>
+        </tr>
+        <tr>
+          <td>Trà xanh 0 Độ</td>
+          <td>1</td>
+          <td>ly</td>
+          <td>15,000</td>
+          <td style="text-align:right;">15,000</td>
+        </tr>
+        <tr>
+          <td>Nước suối</td>
+          <td>2</td>
+          <td>ly</td>
+          <td>10,000</td>
+          <td style="text-align:right;">20,000</td>
+        </tr>
+        <tr>
+          <td>Coca Cola</td>
+          <td>1</td>
+          <td>ly</td>
+          <td>15,000</td>
+          <td style="text-align:right;">15,000</td>
+        </tr>
+        <tr>
+          <td>Thuốc Jet</td>
+          <td>1</td>
+          <td> ly</td>
+          <td>25,000</td>
+          <td style="text-align:right;">25,000</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="summary-label">Tiền hàng</td>
+          <td class="summary-value">430,000</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="summary-detail-label">Giảm giá hàng (5%)</td>
+          <td class="summary-detail-value">(22,000)</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="summary-detail-label">Tiền giờ</td>
+          <td class="summary-detail-value">50,000</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="summary-label">Tổng cộng</td>
+          <td class="summary-value">458,000</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

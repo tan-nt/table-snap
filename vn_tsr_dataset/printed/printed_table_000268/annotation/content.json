@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hóa Đơn Bán Hàng</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>STT (No.)</th>
+          <th> Tên hàng hoá, dịch vụ (Description)</th>
+          <th>Đơn vị tính (Unit)</th>
+          <th>Số lượng (Quantity)</th>
+          <th>Đơn giá (Unit price)</th>
+          <th>Thành tiền (Amount)</th>
+        </tr>
+        <tr>
+          <th>(1)</th>
+          <th>(2)</th>
+          <th>(3)</th>
+          <th>(4)</th>
+          <th>(5)</th>
+          <th>(6) = (4) × (5)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>Thanh lý xe Ô tô con đã qua sử dụng, Số loại: Mazda 3; Biển số: 51G-727.04; Màu sơn: Trắng. Năm sản xuất: 2018, Việt Nam: Số chỗ ngồi: 5 chỗ; Số khung: RN2BN4AA6JC105967: Số máy P520527651</td>
+          <td>Chiếc</td>
+          <td></td>
+          <td>49.924.242</td>
+          <td>49.924.242</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="5">Cộng tiền hàng (Subtotal)</td>
+          <td>49.924.242</td>
+        </tr>
+        <tr>
+          <td colspan="5">Thuế suất GTGT (VAT rate): 8% Tiền thuế GTGT (VAT amount)</td>
+          <td>3.993.939</td>
+        </tr>
+        <tr>
+          <td colspan="5">Tổng cộng tiền thanh toán (Grand Total)</td>
+          <td>53.918.181</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

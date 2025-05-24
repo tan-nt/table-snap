@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>Complex Table Example</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>Tên Hàng</td>
+        <td>ĐVT</td>
+        <td>SL</td>
+        <td>Đơn Giá</td>
+        <td>T. Tiền</td>
+      </tr>
+      <tr>
+        <td>Khẩu trang đen Lợi Thành</td>
+        <td>Hộp</td>
+        <td>3</td>
+        <td>400.000</td>
+        <td>1,200,000</td>
+      </tr>
+      <tr>
+        <td>NaCl (súc miệng) 500ml</td>
+        <td>Chai</td>
+        <td>4</td>
+        <td>5.000</td>
+        <td>20,000</td>
+      </tr>
+      <tr>
+        <td colspan="3">Tổng tiền: 7</td>
+        <td colspan="2">1,220,000</td>
+      </tr>
+    </table>
+  </body>
+</html>

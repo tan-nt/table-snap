@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>Complex Table Example</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>STT</td>
+        <td>Tên hàng hóa, dịch vụ</td>
+        <td>Đơn vị tính</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6 = 4 x 5</td>
+      </tr>
+      <tr>
+        <td>01</td>
+        <td>Điều hòa Samsung 2 chiều 9000 BTU KANHSD9B</td>
+        <td>Bộ</td>
+        <td>01</td>
+        <td>12.000.000</td>
+        <td>12.000.000</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>Tivi Samsung KHNCS32IN</td>
+        <td>Chiếc</td>
+        <td>02</td>
+        <td>14.000.000</td>
+        <td>28.000.000</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Giá treo tivi</td>
+        <td>Chiếc</td>
+        <td>02</td>
+        <td>350.000</td>
+        <td>750.000</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="5">Cộng tiền hàng:
+        <td>40.750.000</td>
+      </tr>
+      <tr>
+        <td colspan="2">Thuế suất GTGT 10%</td>
+        <td colspan="3">Tiền thuế GTGT:</td>
+        <td>4.075.000</td>
+      </tr>
+      <tr>
+        <td colspan="5">Tổng cộng tiền thanh toán:</td>
+        <td>44.825.000</td>
+      </tr>
+      <tr>
+        <td colspan="6">Số tiền bằng chữ: Bốn mươi bốn triệu tám trăm hai mươi lăm nghìn đồng (Số tiền viết bằng chữ).</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <title>Complex Table Example</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên hàng hóa, dịch vụ</th>
+          <th>Đơn vị</th>
+          <th>Số lượng</th>
+          <th>Đơn giá (VNĐ)</th>
+          <th>Thành tiền (VNĐ)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Urdoc</td>
+          <td>viên</td>
+          <td>09</td>
+          <td>10,165</td>
+          <td>609,900</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Provini 500mg</td>
+          <td>viên</td>
+          <td>60</td>
+          <td>40,320</td>
+          <td>2,419,200</td>
+        </tr>
+        <tr>
+          <td colspan="5">Tổng cộng:</td>
+          <td>3,029,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

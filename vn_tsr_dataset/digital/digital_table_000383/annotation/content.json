@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hóa Đơn Chi Tiết</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .left {
+      text-align: left;
+    }
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>STT (No.)</th>
+    <th>Mô tả (Description)</th>
+    <th>ĐVT (Unit)</th>
+    <th>Số lượng (Quantity)</th>
+    <th>Đơn giá (Unit Price)</th>
+    <th>Thành tiền (Amount)</th>
+  </tr>
+  <tr>
+    <td>A</td>
+    <td>i B</td>
+    <td>C</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3 = 1 x 2</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Điện tiêu thụ tháng 12 năm 2024 (từ ngày 01/12/2024 đến ngày 31/12/2024)</td>
+    <td>kWh</td>
+    <td>484</td>
+    <td></td>
+    <td>1.302.618</td>
+  </tr>
+  <tr>
+    <td colspan="6" class="left">(Kèm theo bảng kê số 1374524081 ngày 03 tháng 01 năm 2025)</td>
+  </tr>
+  <tr>
+    <td colspan="5" class="left bold">Cộng tiền hàng (Total Amount):</td>
+    <td>1.302.618</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="left">Thuế suất GTGT (VAT Rate): 8%</td>
+    <td colspan="3" class="left">Tiền thuế GTGT (VAT Amount):</td>
+    <td>104.209</td>
+  </tr>
+  <tr>
+    <td colspan="2" class="left">Tỷ giá (Exchange rate):</td>
+    <td colspan="3" class="left bold">Tổng cộng tiền thanh toán (Total Payment):</td>
+    <td><strong>1.406.827</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" class="left">
+      Số tiền bằng chữ (Amount in words): Một triệu bốn trăm lẻ sáu nghìn tám trăm hai mươi bảy đồng.<br><br>
+      Người mua hàng (Buyer): ..................................................<br>
+      Người bán hàng (Seller): .................................................
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

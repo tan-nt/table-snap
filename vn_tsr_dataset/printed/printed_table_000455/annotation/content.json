@@ -1,0 +1,86 @@
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Nội dung</th>
+        <th>Đơn vị tính</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Tiền tàu thăm vịnh Hạ Long</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1.600.000</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Vé thăm Q</td>
+        <td></td>
+        <td>6</td>
+        <td>120</td>
+        <td>720.000</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Ngao Hoa</td>
+        <td>kg</td>
+        <td>1</td>
+        <td>380</td>
+        <td>380.000</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Thịt rang</td>
+        <td>kg</td>
+        <td>2</td>
+        <td>100</td>
+        <td>200.000</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Cua biển</td>
+        <td>kg</td>
+        <td>4,3</td>
+        <td>580</td>
+        <td>2.494.000</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Mực biển</td>
+        <td>kg</td>
+        <td>1,5</td>
+        <td>550</td>
+        <td>825.000</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Thủy sâm</td>
+        <td>kg</td>
+        <td>3.00</td>
+        <td>650</td>
+        <td>1.625.000</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Cơm trắng + rau xanh + gà + tráng miếng</td>
+        <td></td>
+        <td>6</td>
+        <td>80</td>
+        <td>480.000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" align="right">
+          <strong>Tổng cộng:</strong>
+        </td>
+        <td>9.779.000</td>
+      </tr>
+    </tfoot>
+  </table>

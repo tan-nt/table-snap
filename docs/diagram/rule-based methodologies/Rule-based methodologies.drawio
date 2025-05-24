@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.6">
+  <diagram name="Page-1" id="s1tjJMqKEGR4xC-KgxTY">
+    <mxGraphModel dx="946" dy="516" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SoJdg2l-fKkggQCgqtV9-1" target="SoJdg2l-fKkggQCgqtV9-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-1" value="Document Image" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="200" y="8" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-2" target="SoJdg2l-fKkggQCgqtV9-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-2" value="Pre-processing step to enhance the performance" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-3" target="SoJdg2l-fKkggQCgqtV9-5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="259" />
+              <mxPoint x="155" y="259" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-3" target="SoJdg2l-fKkggQCgqtV9-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="259" />
+              <mxPoint x="366" y="259" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-3" value="Connected component" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="187" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-5" target="SoJdg2l-fKkggQCgqtV9-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-5" value="Line detections such as Hough Transform" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="95" y="279" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="SoJdg2l-fKkggQCgqtV9-6" target="SoJdg2l-fKkggQCgqtV9-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-6" value="Text detections such as OCR" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="306" y="279" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-7" target="SoJdg2l-fKkggQCgqtV9-9" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="155" y="441" />
+              <mxPoint x="264" y="441" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-7" value="Insersection Point Detection between horizontal and vertical lines" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="95" y="369" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="SoJdg2l-fKkggQCgqtV9-8" target="SoJdg2l-fKkggQCgqtV9-9" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="366" y="441" />
+              <mxPoint x="264" y="441" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-8" value="Vertical Text Alignment" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="306" y="369" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SoJdg2l-fKkggQCgqtV9-9" value="Table Position Predictions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="204" y="461" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

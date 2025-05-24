@@ -1,0 +1,36 @@
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên mặt hàng/Dịch vụ</th>
+        <th>ĐVT</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Bestimac Q10 30mg (H/ 60v)</td>
+        <td>viên</td>
+        <td>30</td>
+        <td>4.950</td>
+        <td>148.500</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Devodil 50mg (Hộp 2 vỉ x 10 viên)</td>
+        <td>viên</td>
+        <td>60</td>
+        <td>2.860</td>
+        <td>171.600</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" align="right"><strong>Tổng tiền:</strong></td>
+        <td>320.100</td>
+      </tr>
+    </tfoot>
+  </table>

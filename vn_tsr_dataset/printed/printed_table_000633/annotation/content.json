@@ -1,0 +1,60 @@
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên hàng hóa, dịch vụ</th>
+        <th>Đơn vị</th>
+        <th>Số lượng</th>
+        <th>Đơn giá (VND)</th>
+        <th>Thành tiền (VND)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Probioticslactomin plus 3g</td>
+        <td>gói</td>
+        <td>120</td>
+        <td>6,420</td>
+        <td>770.400</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Babyta</td>
+        <td>lọ</td>
+        <td>3</td>
+        <td>378,000</td>
+        <td>1.134.000</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Newbutin SR</td>
+        <td>viên</td>
+        <td>60</td>
+        <td>9,202</td>
+        <td>552.120</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Imu Pro</td>
+        <td>viên</td>
+        <td>90</td>
+        <td>16,240</td>
+        <td>1.461.600</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Masumax</td>
+        <td>viên</td>
+        <td>90</td>
+        <td>9,749</td>
+        <td>877.410</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" align="right"><strong>Tổng cộng:</strong></td>
+        <td>4.796.000</td>
+      </tr>
+    </tfoot>
+  </table>

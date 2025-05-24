@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hóa Đơn Giá Trị Gia Tăng (VAT Invoice)</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>STT</th>
+        <th>Tên hàng hóa, dịch vụ (Description)</th>
+        <th>ĐVT (Unit)</th>
+        <th>Số lượng (Qty)</th>
+        <th>Đơn giá (Unit Price)</th>
+        <th>Thành tiền (Amount)</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Hàng hóa A</td>
+        <td>Cái</td>
+        <td>2</td>
+        <td>10.000</td>
+        <td>20.000</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Hàng hóa B</td>
+        <td>Cái</td>
+        <td>2</td>
+        <td>10.000</td>
+        <td>20.000</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Hàng hóa C</td>
+        <td>Cái</td>
+        <td>2</td>
+        <td>10.000</td>
+        <td>20.000</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="left bold">Cộng tiền hàng (Subtotal):</td>
+        <td>60.000</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="left">Thuế suất GTGT (VAT Rate): 10%</td>
+        <td>6.000</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="left bold">Tổng cộng tiền thanh toán (Total Payment):</td>
+        <td>
+          <strong>66.000</strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6" class="left">Số tiền bằng chữ (Amount in words): Sáu mươi sáu nghìn đồng chẵn.</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên hàng hóa, dịch vụ</th>
+        <th>Đơn vị tính</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3=1x2</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Prednisalon 5mg</td>
+        <td>Viên</td>
+        <td>2,000</td>
+        <td>133</td>
+        <td>266,000</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Cadimn 480mg</td>
+        <td>Viên</td>
+        <td>300</td>
+        <td>350</td>
+        <td>105,000</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Ciprofloxacin 500mg</td>
+        <td>Viên</td>
+        <td>1,000</td>
+        <td>381</td>
+        <td>381,000</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Dep</td>
+        <td>Lọ</td>
+        <td>200</td>
+        <td>1,905</td>
+        <td>381,000</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Tepan Codein</td>
+        <td>Viên</td>
+        <td>1,000</td>
+        <td>286</td>
+        <td>286,000</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Cloramphenicol 0.4%</td>
+        <td>Viên</td>
+        <td>1,000</td>
+        <td>762</td>
+        <td>762,000</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Vitamin B6 (Pyridoxine)</td>
+        <td>Viên</td>
+        <td>2,000</td>
+        <td>143</td>
+        <td>286,000</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Multivitamin</td>
+        <td>Viên</td>
+        <td>2,000</td>
+        <td>190</td>
+        <td>380,000</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Gliclazid</td>
+        <td>Viên</td>
+        <td>1,000</td>
+        <td>952</td>
+        <td>952,000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" align="right">
+          <strong>Cộng tiền hàng:</strong>
+        </td>
+        <td>3,799,000</td>
+      </tr>
+      <tr>
+        <td colspan="5" align="right">
+          <strong>Thuế suất GTGT:</strong>
+        </td>
+        <td>5%</td>
+      </tr>
+      <tr>
+        <td colspan="5" align="right">
+          <strong>Tiền thuế GTGT:</strong>
+        </td>
+        <td>189,950</td>
+      </tr>
+      <tr>
+        <td colspan="5" align="right">
+          <strong>Tổng cộng thanh toán:</strong>
+        </td>
+        <td>3,988,950</td>
+      </tr>
+    </tfoot>
+  </table>

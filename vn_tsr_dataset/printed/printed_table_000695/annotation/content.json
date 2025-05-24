@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hóa Đơn Bán Hàng</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .left {
+        text-align: left;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Tên hàng hóa, dịch vụ</th>
+        <th>Đơn vị tính</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+      </tr>
+      <tr>
+        <td>Doanh thu nhượng bán căn hộ E1EE-7 Căn 48, trong đó: - Giá chuyển quyền PÂ - Giá bán nhà (Theo HA góp vốn số 77/TTL TT- 2006 ngày 30/6/2006, 95% giá trị HA)</td>
+        <td>Căn</td>
+        <td>2</td>
+        <td></td>
+        <td>480.701.520 117.848827 362.852.693</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="left bold">Cộng tiền hàng:</td>
+        <td>362.852.693</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="left">Thuế suất GTGT (10%):</td>
+        <td>36.285.269</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="left bold">Tổng cộng tiền thanh toán:</td>
+        <td>
+          <strong>516.986.789</strong>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="left"> Số tiền viết bằng chữ: Năm trăm mười sáu triệu chín trăm tám mươi sáu nghìn bảy trăm tám mươi chín đồng </td>
+      </tr>
+    </table>
+  </body>
+</html>
