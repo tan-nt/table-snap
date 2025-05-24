@@ -5,8 +5,70 @@ import os
 from io import BytesIO
 import cv2
 from utils.image import image_to_base64
-import psutil
-from utils.chat import get_google_gemini_generate_answer, get_google_gemini_generate_answer_v2
+from utils.chat import get_google_gemini_generate_answer_v2
+from utils.normalization import html_to_csv
+
+from PIL import Image
+from transformers import DetrImageProcessor
+from transformers import TableTransformerForObjectDetection
+
+import torch
+import matplotlib.pyplot as plt
+import os
+import time
+from transformers import DetrFeatureExtractor
+import pandas as pd
+import pytesseract
+from utils.unitable_util import plot_rec_box, LoadImage, format_html, box_4_2_poly_to_box_4_1
+import time
+from lineless_table_rec import LinelessTableRecognition
+from rapid_table import RapidTable, RapidTableInput
+from wired_table_rec import WiredTableRecognition
+from rapid_table.main import ModelType
+from rapidocr_onnxruntime import RapidOCR
+from wired_table_rec.main import WiredTableInput, WiredTableRecognition
+from lineless_table_rec.main import LinelessTableInput, LinelessTableRecognition
+
+
+cell_recognition_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-transformer-structure-recognition")
+table_detection_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-transformer-detection")
+
+feature_extractor = DetrFeatureExtractor()
+
+img_loader = LoadImage()
+
+rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="model_weights/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
+SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="model_weights/tsr/slanet-plus.onnx"))
+unitable_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.UNITABLE.value, model_path={
+            "encoder": f"model_weights/tsr/unitable_encoder.pth",
+            "decoder": f"model_weights/tsr/unitable_decoder.pth",
+            "vocab": f"model_weights/tsr/unitable_vocab.json",
+        }))
+
+wired_input = WiredTableInput()
+lineless_input = LinelessTableInput()
+wired_engine = WiredTableRecognition(wired_input)
+wired_table_engine_v1 = wired_engine
+wired_table_engine_v2 = wired_engine
+lineless_engine = LinelessTableRecognition(lineless_input)
+det_model_dir = {
+    "mobile_det": "model_weights/ocr/ch_PP-OCRv4_det_infer.onnx",
+}
+
+rec_model_dir = {
+    "mobile_rec": "model_weights/ocr/ch_PP-OCRv4_rec_infer.onnx",
+}
+ocr_engine_dict = {}
+for det_model in det_model_dir.keys():
+    for rec_model in rec_model_dir.keys():
+        det_model_path = det_model_dir[det_model]
+        rec_model_path = rec_model_dir[rec_model]
+        key = f"{det_model}_{rec_model}"
+        ocr_engine_dict[key] = RapidOCR(det_model_path=det_model_path, rec_model_path=rec_model_path)
+
+COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],
+          [0.494, 0.184, 0.556], [0.466, 0.674, 0.188], [0.301, 0.745, 0.933]]
+
 
 st.set_page_config(page_title="Table Snap", layout="wide", page_icon="assets/table_snap_icon.png")
 st.title("Table Snap - A solution for extracting tables from invoices, receipts, and more.")
@@ -60,69 +122,6 @@ elif selected == "💬 Table Chatbot":
     st.session_state.page = "table_chatbot"
 
 
-from PIL import Image
-from transformers import DetrImageProcessor
-from transformers import TableTransformerForObjectDetection
-
-import torch
-import matplotlib.pyplot as plt
-import os
-import time
-from transformers import DetrFeatureExtractor
-import pandas as pd
-import pytesseract
-from utils.unitable_util import plot_rec_box, LoadImage, format_html, box_4_2_poly_to_box_4_1
-import time
-from lineless_table_rec import LinelessTableRecognition
-from rapid_table import RapidTable, RapidTableInput
-from wired_table_rec import WiredTableRecognition
-from rapid_table.main import ModelType
-# from table_cls import TableCls
-from rapidocr_onnxruntime import RapidOCR
-from wired_table_rec.main import WiredTableInput, WiredTableRecognition
-from lineless_table_rec.main import LinelessTableInput, LinelessTableRecognition
-
-cell_recognition_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-transformer-structure-recognition")
-table_detection_model = TableTransformerForObjectDetection.from_pretrained("microsoft/table-transformer-detection")
-
-feature_extractor = DetrFeatureExtractor()
-
-img_loader = LoadImage()
-
-rapid_table_engine = RapidTable(RapidTableInput(model_type=ModelType.PPSTRUCTURE_ZH.value, model_path="model_weights/tsr/ch_ppstructure_mobile_v2_SLANet.onnx"))
-SLANet_plus_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.SLANETPLUS.value, model_path="model_weights/tsr/slanet-plus.onnx"))
-unitable_table_Engine = RapidTable(RapidTableInput(model_type=ModelType.UNITABLE.value, model_path={
-            "encoder": f"model_weights/tsr/unitable_encoder.pth",
-            "decoder": f"model_weights/tsr/unitable_decoder.pth",
-            "vocab": f"model_weights/tsr/unitable_vocab.json",
-        }))
-
-wired_input = WiredTableInput()
-lineless_input = LinelessTableInput()
-wired_engine = WiredTableRecognition(wired_input)
-wired_table_engine_v1 = wired_engine
-wired_table_engine_v2 = wired_engine
-lineless_engine = LinelessTableRecognition(lineless_input)
-det_model_dir = {
-    "mobile_det": "model_weights/ocr/ch_PP-OCRv4_det_infer.onnx",
-}
-
-rec_model_dir = {
-    "mobile_rec": "model_weights/ocr/ch_PP-OCRv4_rec_infer.onnx",
-}
-ocr_engine_dict = {}
-for det_model in det_model_dir.keys():
-    for rec_model in rec_model_dir.keys():
-        det_model_path = det_model_dir[det_model]
-        rec_model_path = rec_model_dir[rec_model]
-        key = f"{det_model}_{rec_model}"
-        ocr_engine_dict[key] = RapidOCR(det_model_path=det_model_path, rec_model_path=rec_model_path)
-
-
-COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],
-          [0.494, 0.184, 0.556], [0.466, 0.674, 0.188], [0.301, 0.745, 0.933]]
-
-
 def plot_results(model, pil_img, scores, labels, boxes):
     plt.figure(figsize=(16,10))
     plt.imshow(pil_img)
@@ -174,6 +173,7 @@ def cell_detection(file_path):
     plot_results(cell_recognition_model, image, results['scores'], results['labels'], results['boxes'])
     cell_recognition_model.config.id2label
 
+
 def plot_results_specific(pil_img, scores, labels, boxes,lab):
     plt.figure(figsize=(16, 10))
     plt.imshow(pil_img)
@@ -189,6 +189,7 @@ def plot_results_specific(pil_img, scores, labels, boxes,lab):
     plt.axis('off')
     st.pyplot(plt)
 
+
 def draw_box_specific(image_path,labelnum):
     image = Image.open(image_path).convert("RGB")
     width, height = image.size
@@ -200,6 +201,7 @@ def draw_box_specific(image_path,labelnum):
 
     results = feature_extractor.post_process_object_detection(outputs, threshold=0.7, target_sizes=[(height, width)])[0]
     plot_results_specific(image, results['scores'], results['labels'], results['boxes'],labelnum)
+
 
 def compute_boxes(image_path):
     image = Image.open(image_path).convert("RGB")
@@ -216,6 +218,7 @@ def compute_boxes(image_path):
     labels = results['labels'].tolist()
 
     return boxes,labels
+
 
 def extract_table(image_path):
     image = Image.open(image_path).convert("RGB")
@@ -278,62 +281,6 @@ def extract_table(image_path):
             df.loc[len(df)] = row
             row = []
 
-    return df
-
-from bs4 import BeautifulSoup
-
-def normalize_rows_and_headers(headers, rows):
-    # If there are no rows, return None, None
-    if len(rows) == 0:
-        return None, None
-
-    if len(headers) == 0:
-        headers = rows[0]
-        rows = rows[1:]
-
-    # Determine the maximum number of columns in the rows
-    max_columns = max(len(row) for row in rows)
-
-    # Ensure the headers match the maximum number of columns
-    if len(headers) < max_columns:
-        headers.extend([''] * (max_columns - len(headers)))
-
-    # Normalize rows to match header length
-    for row in rows:
-        if len(row) != len(headers):
-            row.extend([''] * (len(headers) - len(row)))  # Add empty strings to rows with fewer columns
-
-    return headers, rows
-
-
-def html_to_csv(html):
-    print('html', html)
-    # Step 1: Parse the HTML content
-    soup = BeautifulSoup(html, 'html.parser')
-
-    # Step 2: Find the table in the HTML (assuming the first <table> is what you want)
-    table = soup.find('table')
-
-    # Step 3: Extract the headers (th elements)
-    headers = [header.text.strip() for header in table.find_all('th')]
-
-    # Step 4: Extract the rows (tr elements)
-    rows = []
-    for row in table.find_all('tr')[1:]:  # Skip the header row
-        columns = row.find_all('td')
-        if columns:
-            rows.append([col.text.strip() for col in columns])
-
-    headers, rows = normalize_rows_and_headers(headers, rows)
-
-    print('headers', headers)
-    print('rows', rows)
-    # Step 5: Create a DataFrame from the extracted data
-    df = pd.DataFrame(rows, columns=headers)
-
-    # Step 6: Save DataFrame to CSV
-    csv_filename = "table_output.csv"
-    df.to_csv(csv_filename, index=False)
     return df
 
 
@@ -480,32 +427,8 @@ def upload_and_extract_table():
 
 
 def select_table_model(img, table_engine_type, det_model, rec_model):
-    # cls, elasp = table_cls_ins(img)
-    # if cls == 'wired':
-    #     return unitable_table_Engine, "wired_table_v2"
-    # elif cls == 'lineless':
-    #     return unitable_table_Engine, "lineless_table"
-    # else:
     return unitable_table_Engine, table_engine_type
-    # if table_engine_type == "RapidTable(SLANet)":
-    #     return rapid_table_engine, table_engine_type
-    # elif table_engine_type == "RapidTable(SLANet-plus)":
-    #     return SLANet_plus_table_Engine, table_engine_type
-    # elif table_engine_type == "RapidTable(unitable)":
-    #     return unitable_table_Engine, table_engine_type
-    # elif table_engine_type == "wired_table_v1":
-    #     return wired_table_engine_v1, table_engine_type
-    # elif table_engine_type == "wired_table_v2":
-    #     print("使用v2 wired table")
-    #     return wired_table_engine_v2, table_engine_type
-    # elif table_engine_type == "lineless_table":
-    #     return lineless_table_engine, table_engine_type
-    # elif table_engine_type == "auto":
-    #     cls, elasp = table_cls(img)
-    #     if cls == 'wired':
-    #         table_engine = wired_table_engine_v2
-    #         return table_engine, "wired_table_v2"
-    #     return lineless_table_engine, "lineless_table"
+
 
 def select_ocr_model(det_model, rec_model):
     return ocr_engine_dict[f"{det_model}_{rec_model}"]
@@ -522,6 +445,7 @@ def trans_char_ocr_res(ocr_res):
             word_res.append(score)
             word_result.append(word_res)
     return word_result
+
 
 def process_image(img_input, small_box_cut_enhance, table_engine_type, char_ocr, rotated_fix, col_threshold, row_threshold):
     det_model="mobile_det"
@@ -556,35 +480,6 @@ def process_image(img_input, small_box_cut_enhance, table_engine_type, char_ocr,
 
     return complete_html, table_boxes_img, ocr_boxes_img, all_elapse
 
-def get_response_from_table_gpt(text):
-    from transformers import AutoTokenizer, AutoModelForCausalLM
-    model_name = "tablegpt/TableGPT2-7B"
-    # model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype='auto', device_map='auto')
-    # model = AutoModelForCausalLM.from_pretrained(
-    #     model_name,
-    #     torch_dtype=torch.float32,  # Force the model to use float32 precision
-    #     device_map='auto'  # Automatically distribute the model across available devices
-    # )
-
-    # Load the model (with device_map="auto" and offloading enabled)
-    table_gpt_model = AutoModelForCausalLM.from_pretrained(
-        model_name,  # Replace with your model name
-        torch_dtype="auto",  # Auto-detect precision
-        device_map="auto",  # Automatically assign devices (GPU/CPU)
-    )
-
-    # Specify the offload directory (the folder where the model weights will be saved)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-    model_inputs = tokenizer([text], return_tensors="pt").to(table_gpt_model.device)
-    generated_ids = table_gpt_model.generate(**model_inputs, max_new_tokens=512)
-    generated_ids = [output_ids[len(input_ids):] for output_ids, input_ids in zip(model_inputs["input_ids"], generated_ids)]
-    response = tokenizer.decode(generated_ids, skip_special_tokens=True)[0]
-    return response
-
-
-def get_response_from_ai(text):
-    return get_google_gemini_generate_answer_v2(text)
 
 if st.session_state.page == "home":
     st.title("Welcome to Table Snap")
@@ -664,7 +559,7 @@ elif st.session_state.page == "table_chatbot":
         else:
             prompt = user_input
 
-        response = get_response_from_ai(prompt)
+        response = get_google_gemini_generate_answer_v2(prompt)
         print('response=', response)
         # Append bot response to the conversation history
         bot_response = f"🤖 Bot: {response}"

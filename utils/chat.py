@@ -145,3 +145,24 @@ def google_gemini_generate_answer_with_grounding(question=''):
     except Exception as e:
         # print(f'failed to get google_gemini_generate_answer_with_grounding')
         return re.sub("\s\s+", " ", result.strip())
+
+
+def get_response_from_table_gpt(text):
+    from transformers import AutoTokenizer, AutoModelForCausalLM
+    model_name = "tablegpt/TableGPT2-7B"
+
+    # Load the model (with device_map="auto" and offloading enabled)
+    table_gpt_model = AutoModelForCausalLM.from_pretrained(
+        model_name,  # Replace with your model name
+        torch_dtype="auto",  # Auto-detect precision
+        device_map="auto",  # Automatically assign devices (GPU/CPU)
+    )
+
+    # Specify the offload directory (the folder where the model weights will be saved)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+    model_inputs = tokenizer([text], return_tensors="pt").to(table_gpt_model.device)
+    generated_ids = table_gpt_model.generate(**model_inputs, max_new_tokens=512)
+    generated_ids = [output_ids[len(input_ids):] for output_ids, input_ids in zip(model_inputs["input_ids"], generated_ids)]
+    response = tokenizer.decode(generated_ids, skip_special_tokens=True)[0]
+    return response

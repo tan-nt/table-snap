@@ -23,3 +23,6 @@ accelerate>=0.20.3
 pillow
 pandas
 google-cloud-aiplatform
+apted
+distance
+lxml

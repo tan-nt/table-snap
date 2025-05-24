@@ -62,8 +62,6 @@ if __name__ == '__main__':
     }]
 
 
-    from albumentations import PadIfNeeded
-
     start_digital_folder_number = 4
     end_digital_folder_number = 701
     for i in range(start_digital_folder_number, end_digital_folder_number):
@@ -84,8 +82,8 @@ if __name__ == '__main__':
         random_based_image_file = random.choice(based_image_files)
         print(f"Using {random_based_image_file['img_file_name']} as the base image")
 
-        shutil.copy(random_based_image_file['annotation_file_name'], f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/annotation/content.json')
-        shutil.copy(random_based_image_file['annotation_structure_file_name'], f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/annotation/structure.html')
+        shutil.copy(random_based_image_file['annotation_file_name'], f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/annotation/content.html')
+        shutil.copy(random_based_image_file['annotation_structure_file_name'], f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/annotation/structure.json')
 
 
         img = cv2.imread(random_based_image_file['img_file_name'])
@@ -108,7 +106,7 @@ if __name__ == '__main__':
         ], p=1.0)
         augmented = augmentations(image=img)['image']
 
-        output_path = os.path.join(f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/img', f"image_{six_digits_str}.png")
+        output_path = os.path.join(f'vn_tsr_dataset/digital/digital_table_{six_digits_str}/img', f"digital_table_{six_digits_str}.png")
         cv2.imwrite(output_path, augmented)
         print(f"Saved {output_path}")
 
