@@ -10,3 +10,9 @@ import cv2
 import json
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
+# load dataset
+folder = 'train'
+with open('D:/dataset/table/table_line/Split1/'+ folder+'_labels.json', 'r') as f:
+    labels = json.load(f)
+dataset = ImageDataset('D:/dataset/table/table_line/Split1/'+ folder+'_input', labels, 8, scale=0.25)

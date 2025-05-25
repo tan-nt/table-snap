@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-
-
 def visualize_unitable_results():
     # Read CSV data
     df = pd.read_csv('ai_models/unitable/unitable_teds_results.csv')

@@ -382,10 +382,11 @@ def get_predicted_html_by_yolo(image_path):
     predicted_html = predicted_html_table_template(header_html, body_rows_html)
     return predicted_html
 
+
 def test_vn_tsr_dataset_by_yolo():
     dataset_folders = 'vn_tsr_dataset'
     teds = TEDS(structure_only=True)
-    csv_filename = "ai_models/yolo/yolo_teds_results.csv"
+    csv_filename = "/yolo_teds_results.csv"
     fieldnames = ['image_file', 'ted_score', 'pred_html', 'annotation_html']
 
     existing_results = {}
@@ -412,6 +413,7 @@ def test_vn_tsr_dataset_by_yolo():
                 if img_path in existing_results:
                     print(f"Skipping already processed file: {img_path}")
                     continue
+
                 if 'table' not in img_path:
                     continue
 
@@ -431,3 +433,5 @@ def test_vn_tsr_dataset_by_yolo():
                 csv_file.flush()  # Force write to disk after each entry
 
     print(f"Results saved to {csv_filename}")
+
+test_vn_tsr_dataset_by_yolo()

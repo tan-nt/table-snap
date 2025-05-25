@@ -49,6 +49,8 @@ def extract_table(image_path):
                     cell_locations.append(cell_box)
 
     cell_locations.sort(key=lambda x: (x[1], x[0]))
+    if len(cell_locations) == 0:
+        return None
 
     num_columns = 0
     box_old = cell_locations[0]
@@ -129,6 +131,8 @@ def test_vn_tsr_dataset_by_transformer_table():
                     continue
 
                 table = extract_table(img_path)
+                if table is None:
+                    continue
                 pred_html = table.to_html()
                 anno_html = open(f'{dataset_folders}/{dataset_folder}/{folder_data}/annotation/content.html', 'r', encoding='utf-8').read()
                 score = teds.evaluate(pred_html, anno_html)
