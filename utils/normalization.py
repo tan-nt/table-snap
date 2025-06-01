@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import pandas as pd
 
 def normalize_rows_and_headers(headers, rows):
     # If there are no rows, return None, None

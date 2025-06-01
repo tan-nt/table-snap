@@ -184,7 +184,6 @@ ref_code/SEM_custom/dataset/SciTSR/
 
 */documents/*
 
-*.pth
 
 **logs/
 
@@ -197,7 +196,6 @@ resnet_34.pth
 
 .DS_Store
 
-**/*.pth
 
 *MasterThesis*
 

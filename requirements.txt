@@ -12,7 +12,6 @@ table_cls
 rapid_table
 rapid_table[torch]
 rapidocr_onnxruntime
-onnxruntime-gpu
 matplotlib
 transformers
 psutil
@@ -26,3 +25,4 @@ google-cloud-aiplatform
 apted
 distance
 lxml
+beautifulsoup4
