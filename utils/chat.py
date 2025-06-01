@@ -35,13 +35,10 @@ safety_settings = [
 ]
 
 
-
-
 def get_google_gemini_generate_answer(question=''):
     # try:
         if not question:
             return
-        print('cf', cf)
 
         vertexai.init(project=cf.get("PROJECT_ID"), location="global")
         model = GenerativeModel(
@@ -71,7 +68,7 @@ def get_google_gemini_generate_answer(question=''):
 def get_google_gemini_generate_answer_v2(question=''):
     client = genai.Client(
         vertexai=True,
-        project="intelligent-tutoring-system",
+        project="anfin-dev",
         location="global",
     )
 
@@ -120,7 +117,7 @@ def google_gemini_generate_answer_with_grounding(question=''):
     try:
         if not question:
             return
-        vertexai.init(project="intelligent-tutoring-system", location="us-central1")
+        vertexai.init(project="anfin-dev", location="us-central1")
         tools = [
             Tool.from_google_search_retrieval(
                 google_search_retrieval=generative_models.grounding.GoogleSearchRetrieval()

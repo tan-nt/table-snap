@@ -545,14 +545,16 @@ elif st.session_state.page == "table_chatbot":
         st.session_state.conversation.append(f"User: {user_input}")
 
         prompt_template = """
-            Given access to several pandas dataframes, answer the user's question.
-            /*
-                "{var_name}.head(5).to_string(index_False)" as follows:
-                {df_info}
-            */
+            You have access to several pandas dataframes containing the information extracted from the image.
+
+            Your task is to answer the user's question in a plain text format. The response should provide a clear and concise explanation or analysis, formatted for easy reading (no markdown or code formatting).
+
+            For reference, the dataframes contain:
+            "{var_name}.head(5).to_string(index=False)"
+            {df_info}
+
             Question: {user_input}
         """
-        print('prompt_template=', prompt_template)
 
         if latest_df is not None:
             prompt = prompt_template.format(var_name="latest_df", df_info=latest_df, user_input=user_input)

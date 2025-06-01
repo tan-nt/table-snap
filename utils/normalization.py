@@ -109,6 +109,6 @@ def html_to_csv(html):
     df = pd.DataFrame(rows, columns=headers)
 
     # Step 6: Save DataFrame to CSV
-    csv_filename = "table_output.csv"
-    df.to_csv(csv_filename, index=False)
+    # csv_filename = "table_output.csv"
+    # df.to_csv(csv_filename, index=False)
     return df
