@@ -41,7 +41,7 @@ def save_teds_score():
 
 
 def draw_teds_score_chart():
-    teds_score_df = pd.read_csv('teds_score.csv')
+    teds_score_df = pd.read_csv('assets/teds_score.csv')
 
     teds_score_df = teds_score_df.sort_values(by='ted_score', ascending=False)
 
@@ -214,7 +214,7 @@ def visualize_lowest_highest_teds_images():
 
 
 # save_teds_score()
-# draw_teds_score_chart()
+draw_teds_score_chart()
 # visualize_validation_results()
 # visualize_lowest_highest_teds_images()
-visualize_transformed_images()
+# visualize_transformed_images()

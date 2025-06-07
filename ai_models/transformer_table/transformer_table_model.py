@@ -115,6 +115,8 @@ def test_vn_tsr_dataset_by_transformer_table():
         if not existing_results:
             writer.writeheader()
 
+        avg_time = 0
+        count = 0
         index = len(existing_results) + 1
         for dataset_folder in os.listdir(dataset_folders):
             if not os.path.isdir(f'{dataset_folders}/{dataset_folder}'):
@@ -126,13 +128,23 @@ def test_vn_tsr_dataset_by_transformer_table():
                 img_path = f'{dataset_folders}/{dataset_folder}/{folder_data}/img/{folder_data}.png'
                 if 'table' not in img_path:
                     continue
-                if img_path in existing_results:
-                    print(f"Skipping already processed file: {img_path}")
-                    continue
+                # if img_path in existing_results:
+                #     print(f"Skipping already processed file: {img_path}")
+                #     continue
 
+                import time
+
+                start_time = time.time()
                 table = extract_table(img_path)
+                end_time = time.time()
                 if table is None:
                     continue
+                avg_time += end_time - start_time
+                count += 1
+                step_avg_time = avg_time / count
+                # Calculate FPS
+                fps = 1.0 / step_avg_time
+                print(f"Processed in {step_avg_time:.4f} seconds — FPS: {fps:.2f}")
                 pred_html = table.to_html()
                 anno_html = open(f'{dataset_folders}/{dataset_folder}/{folder_data}/annotation/content.html', 'r', encoding='utf-8').read()
                 score = teds.evaluate(pred_html, anno_html)

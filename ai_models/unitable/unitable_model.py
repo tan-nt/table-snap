@@ -121,6 +121,8 @@ def test_vn_tsr_dataset_by_unitable():
             writer.writeheader()
 
         index = len(existing_results) + 1
+        avg_time = 0
+        count = 0
         for dataset_folder in os.listdir(dataset_folders):
             if not os.path.isdir(f'{dataset_folders}/{dataset_folder}'):
                 continue
@@ -131,9 +133,9 @@ def test_vn_tsr_dataset_by_unitable():
                 img_path = f'{dataset_folders}/{dataset_folder}/{folder_data}/img/{folder_data}.png'
                 if 'table' not in img_path:
                     continue
-                if img_path in existing_results:
-                    print(f"Skipping already processed file: {img_path}")
-                    continue
+                # if img_path in existing_results:
+                #     print(f"Skipping already processed file: {img_path}")
+                #     continue
 
                 img = img_loader(img_path)
                 small_box_cut_enhance = True
@@ -142,6 +144,7 @@ def test_vn_tsr_dataset_by_unitable():
                 rotated_fix = True
                 col_threshold = 15
                 row_threshold = 10
+                start_time = time.time()
                 pred_html, table_boxes_img, ocr_boxes_img, all_elapse = process_image(
                     img,
                     small_box_cut_enhance,
@@ -151,6 +154,15 @@ def test_vn_tsr_dataset_by_unitable():
                     col_threshold,
                     row_threshold,
                 )
+                end_time = time.time()
+                avg_time += end_time - start_time
+                count += 1
+                step_avg_time = avg_time / count
+                # Calculate FPS
+                fps = 1.0 / step_avg_time
+                print(f"Processed in {step_avg_time:.4f} seconds — FPS: {fps:.2f}")
+
+                print(f"Time taken: {end_time - start_time} seconds")
                 anno_html = open(f'{dataset_folders}/{dataset_folder}/{folder_data}/annotation/content.html', 'r', encoding='utf-8').read()
                 normalized_pred_html = normalize_html(pred_html)
                 score = teds.evaluate(normalized_pred_html, anno_html)
@@ -165,5 +177,7 @@ def test_vn_tsr_dataset_by_unitable():
                     "annotation_html": anno_html
                 })
                 csv_file.flush()  # Force write to disk after each entry
+
+
 
     print(f"Results saved to {csv_filename}")

@@ -434,4 +434,4 @@ def test_vn_tsr_dataset_by_yolo():
 
     print(f"Results saved to {csv_filename}")
 
-test_vn_tsr_dataset_by_yolo()
+# test_vn_tsr_dataset_by_yolo()

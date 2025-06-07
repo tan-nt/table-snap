@@ -7,5 +7,5 @@ from ai_models.yolo.yolo_model import test_vn_tsr_dataset_by_yolo
 
 # test_vn_tsr_dataset_by_yolo()
 test_vn_tsr_dataset_by_transformer_table()
-test_vn_tsr_dataset_by_contours_detection()
-test_vn_tsr_dataset_by_unitable()
+# test_vn_tsr_dataset_by_contours_detection()
+# test_vn_tsr_dataset_by_unitable()
